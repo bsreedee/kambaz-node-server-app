@@ -1,15 +1,16 @@
+
 ## Getting Started
 
-First, run using the command:
+First, run the development server:
 
 ```bash
 nodemon index.js
-
+```
 
 Open [http://localhost:4000](http://localhost:4000) with your browser to see the result.
 
 This is used by the Next JS kambaz-next-js project.
-That project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+That  project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
