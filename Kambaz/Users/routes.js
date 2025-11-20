@@ -3,9 +3,13 @@ export default function UserRoutes(app, db) {
  const dao = UsersDao(db);
   const createUser = (req, res) => { };
   const deleteUser = (req, res) => { };
-  const findAllUsers = (req, res) => { };
+  
   const findUserById = (req, res) => { };
 
+  const findAllUsers = (req, res) => { 
+  const users = dao.findAllUsers();
+  res.json(users);
+};
 
   const updateUser = (req, res) => { 
     const userId = req.params.userId;
@@ -50,7 +54,7 @@ export default function UserRoutes(app, db) {
 
     res.json(currentUser);
   };
-
+  
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
   app.get("/api/users/:userId", findUserById);

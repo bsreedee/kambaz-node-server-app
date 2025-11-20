@@ -23,7 +23,7 @@
     "CS5610",
     "CS4550"
   ],
-  "author": "Sree Deepya B",
+  "author": "Sree Deepya Bondalapati",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bsreedee/kambaz-node-server-app/issues"
@@ -35,8 +35,5 @@
     "express-session": "^1.18.2",
     "cors": "^2.8.5",
     "uuid": "^13.0.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
   }
 }
