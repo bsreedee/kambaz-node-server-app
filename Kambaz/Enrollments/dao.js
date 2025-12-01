@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
+import usersModel from "../Users/model.js";
 
 export async function findCoursesForUser(userId) {
  const enrollments = await model.find({ user: userId }).populate("course");
@@ -14,16 +15,29 @@ export default function EnrollmentsDao() {
   }
 
   async function findEnrollmentsForUser(userId) {
-    return model.find({ user: userId }); 
+    return await model.find({ user: userId }); 
   }
 
   async function findEnrollmentsForCourse(courseId) {
-    return model.find({ course: courseId });
+    return await model.find({ course: courseId });
   }
+
+  async function findUsersForCourse(courseId) {
+  const enrollments = await model.find({ course: courseId });
+
+  const userIds = enrollments.map((e) => e.user);
+
+  const users = await usersModel.find({ _id: { $in: userIds } });
+
+  return users;
+}
+
+
    
   function unenrollAllUsersFromCourse(courseId) {
    return model.deleteMany({ course: courseId });
  }
+
  function enrollUserInCourse(userId, courseId) {
   return model.create({
     user: userId,
@@ -40,6 +54,7 @@ function unenrollUserFromCourse(user, course) {
     findEnrollmentsForUser, 
     findEnrollmentsForCourse,
     findCoursesForUser,
-    unenrollAllUsersFromCourse  
+    unenrollAllUsersFromCourse,
+    findUsersForCourse
   };
 }
