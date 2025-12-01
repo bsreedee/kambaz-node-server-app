@@ -12,14 +12,14 @@ export default function EnrollmentsRoutes(app, db) {
     dao.unenrollUserFromCourse(enrollmentId);
     res.sendStatus(200);
   };
-  const findEnrollmentsForUser = (req, res) => {
+  const findEnrollmentsForUser = async (req, res) => {
     const { userId } = req.params;
-    const enrollments = dao.findEnrollmentsForUser(userId);
+    const enrollments = await dao.findEnrollmentsForUser(userId);
     res.json(enrollments);
   };
-  const findEnrollmentsForCourse = (req, res) => {
+  const findEnrollmentsForCourse = async (req, res) => {
     const { courseId } = req.params;
-    const enrollments = dao.findEnrollmentsForCourse(courseId);
+    const enrollments = await dao.findEnrollmentsForCourse(courseId);
     res.json(enrollments);
   };
   // Kambaz/Enrollments/routes.js
@@ -44,7 +44,7 @@ app.get("/api/courses/:courseId/enrollments", (req, res) => {
 
   app.get("/api/enrollments/users/:userId", findEnrollmentsForUser);
   app.get("/api/enrollments/courses/:courseId", findEnrollmentsForCourse);
-  app.delete("/api/enrollments/:enrollmentId", unenrollUserFromCourse);
+  app.delete("/api/users/:uid/courses/:cid", unenrollUserFromCourse);
   app.post(
     "/api/enrollments/users/:userId/courses/:courseId",
     enrollUserInCourse
