@@ -12,7 +12,7 @@ export default function CoursesDao() {
     .find({ user: userId })
     .populate("course");
   return enrollments.map((enrollment) => enrollment.course);
-}
+  }
 
   function createCourse(course) {
     const newCourse = { ...course, _id: uuidv4() };
