@@ -10,6 +10,7 @@ import ModulesRoutes from "./Kambaz/Modules/routes.js";
 import AssignmentsRoutes from "./Kambaz/Assignments/routes.js";
 import EnrollmentsRoutes from "./Kambaz/Enrollments/routes.js"; 
 import QuizzesRoutes from "./Kambaz/Quizzes/routes.js";
+import QuizAttemptsRoutes from "./Kambaz/QuizAttempts/routes.js"; // ← ADD THIS LINE
 import "dotenv/config";
 import session from "express-session";
 
@@ -48,7 +49,6 @@ ModulesRoutes(app, db);
 AssignmentsRoutes(app, db);
 EnrollmentsRoutes(app, db);
 QuizzesRoutes(app, db);
+QuizAttemptsRoutes(app); // ← ADD THIS LINE (no db parameter needed)
 
 app.listen(process.env.PORT || 4000)
-
-
